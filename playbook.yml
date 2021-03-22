@@ -26,14 +26,14 @@
       update: yes
 
 
-  # - name: Ensure bash, OpenSSl, and libssl are the latest versions
-  #   apt: name={{ item }} update_cache=true state=latest
-  #   with_items:
-  #     - bash
-  #     - openssl
-  #     - libssl-dev
-  #     - libssl-doc
-  #   tags: packages
+  - name: Ensure bash, OpenSSl, and libssl are the latest versions
+    apt: name={{ item }} update_cache=true state=latest
+    with_items:
+      - bash
+      - openssl
+      - libssl-dev
+      - libssl-doc
+    tags: packages
 
   - name: ensure apt cache is up to date
     apt: update_cache=yes

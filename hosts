@@ -2,9 +2,9 @@
 52.148.138.186
 
 [azure-vm:vars]
-dbname=ansible_data
+dbname=data
 dbuser=user
 dbpassword=pwd123
 github_user=thibault-Merelle
 AZ_user=azureuser
-app_name=Ansible
+app_name=azure-web-service

@@ -2,7 +2,7 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 import sys
-load_dotenv('/home/azureuser/Ansible/.env')
+load_dotenv('/home/azureuser/azure-web-service/.env')
 
 class DB:
     def __init__(self):
