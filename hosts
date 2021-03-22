@@ -1,5 +1,5 @@
 [azure-vm]
-13.77.137.96
+52.148.138.186
 
 [azure-vm:vars]
 dbname=ansible_data
