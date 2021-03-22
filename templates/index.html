@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <h1>Welcome to the homepage</h1>
+        <div class="wrapper">
+            <center>
+                <form action="{{url_for('id', name='user')}}" method="POST">
+                    <input type="text" name="user" maxlength="12" size="14" placeholder="enter your name" value="{{ user }}"><br>
+                    <input type="submit" placeholder="Save me">
+                </form>
+                <div id="jinja">
+                    {% if checking == False %}
+                    <h2>User unavailable, choose another !</h2>
+                    {% endif %}
+                </div>
+            </center>
+        </div>
+    </body>
+</html>

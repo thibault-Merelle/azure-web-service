@@ -1,0 +1,67 @@
+- name: set up azure-vm
+  hosts: azure-vm
+  become: yes
+  become_method: sudo
+  remote_user: "{{ AZ_user }}"
+
+  tasks:
+
+  # - name: create folder /pansible
+  #   file:
+  #    path: /home/azureuser/pansible
+  #    state: directory
+  #    #mode: '0755'
+
+  # - name: copy source files
+  #   copy:
+  #     src: /home/simplon/Bureau/Ansible
+  #     dest: /home/azureuser/pansible
+  #     mode: '0755'
+
+
+  - name: clone git repository
+    git:
+      repo: "https://github.com/{{ github_user }}/{{ app_name }}.git"
+      dest: /home/{{ AZ_user }}/{{ app_name }}
+      update: yes
+
+
+  # - name: Ensure bash, OpenSSl, and libssl are the latest versions
+  #   apt: name={{ item }} update_cache=true state=latest
+  #   with_items:
+  #     - bash
+  #     - openssl
+  #     - libssl-dev
+  #     - libssl-doc
+  #   tags: packages
+
+  - name: ensure apt cache is up to date
+    apt: update_cache=yes
+
+  - name: ensure packages are installed
+    apt: name={{ item }} state=latest
+    with_items:
+        - postgresql
+        - libpq-dev
+        - python3-flask
+        - python3-dotenv
+        - python3-psycopg2
+
+  - name: Create user psql
+    become: yes
+    become_user: postgres
+    postgresql_user:
+     name: "{{ dbuser }}"
+     password: "{{ dbpassword }}"
+     role_attr_flags: "CREATEDB,NOSUPERUSER"
+
+  - name: Create database
+    become: yes
+    become_user: postgres
+    postgresql_db:
+        name: "{{ dbname }}"
+        owner: "{{ dbuser }}"
+
+  - name: execute app.py
+    command: python3 /home/{{ AZ_user }}/{{ app_name }}/app.py
+
