@@ -27,6 +27,15 @@ jobs:
         platform: python
         platform-version: '3.8'
 
+    - name: ensure packages are installed
+      apt: name={{ item }} state=latest
+      with_items:
+          - postgresql
+          - libpq-dev
+          - python3-flask
+          - python3-dotenv
+          - python3-psycopg2
+
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:

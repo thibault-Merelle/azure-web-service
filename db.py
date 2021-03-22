@@ -34,8 +34,8 @@ class DB:
         self._dbcon.commit()
 
     def test_insert(self):
-        self._cursor.execute("INSERT INTO users (names) VALUES ('Martin');")
-        self._cursor.execute("INSERT INTO users (names) VALUES ('John');")
+        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('Martin', 'martin@hotmail.fr');")
+        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('John', 'johnDo@gmail.com');")
         self._dbcon.commit()
 
     # def check_user(self, user):
@@ -45,7 +45,7 @@ class DB:
 
     def insert_user(self, user):
         try:
-            self._cursor.execute("INSERT INTO users (names) VALUES (%s);", (user,))
+            self._cursor.execute("INSERT INTO users (names, mail) VALUES (%s, %s);", (user, mail,))
             self._dbcon.commit()
             return True
         except:
