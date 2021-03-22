@@ -17,7 +17,7 @@ mydb = DB()
 
 
 
-logging.basicConfig(filename="LOG_ansible.log",
+logging.basicConfig(filename="LOG.log",
                     filemode="a",
                     format='%(asctime)s: %(levelname)s: %(message)s',
                     level=logging.DEBUG,

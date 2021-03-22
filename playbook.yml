@@ -6,19 +6,6 @@
 
   tasks:
 
-  # - name: create folder /pansible
-  #   file:
-  #    path: /home/azureuser/pansible
-  #    state: directory
-  #    #mode: '0755'
-
-  # - name: copy source files
-  #   copy:
-  #     src: /home/simplon/Bureau/Ansible
-  #     dest: /home/azureuser/pansible
-  #     mode: '0755'
-
-
   - name: clone git repository
     git:
       repo: "https://github.com/{{ github_user }}/{{ app_name }}.git"
