@@ -11,7 +11,7 @@ from flask import (
 )
 from logger import log
 from db import DB
-from sender import mailing
+from sender import send_mail
 
 # load_dotenv('/home/azureuser/Ansible/.env')
 mydb = DB()

@@ -19,6 +19,7 @@ def send_mail(email_to):
     msg['To'] = email_to
     msg['Subject'] = 'bonjour !!!' 
     s = smtplib.SMTP_SSL(host = 'smtp.gmail.com', port = 465)
+    s.starttls()
     s.login(user = email, password = pwd)
     s.sendmail(email, email, msg.as_string())
     s.quit()
