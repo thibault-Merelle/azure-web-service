@@ -1,11 +1,11 @@
 import smtplib, ssl
 import threading
-
+import os 
 
 def mailing(mail, mymessage):
-    sender_mail = "dupondj587@gmail.com"
+    sender_mail=os.environ['SENDER_MAIL']
     dest_mail = str(mail)
-    password = input(str("Enter your mail password: "))
+    password=os.environ['SENDER_PWD']
     message = mymessage
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
