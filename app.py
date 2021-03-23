@@ -43,6 +43,7 @@ def index():
 def id(name='undefine'):
     r = request.form
     user = r['user']
+    mail = r['mail']
     with DB() as mydb:
         checking = mydb.insert_user(user) 
         max_users = mydb.get_max().strip(",()")
@@ -54,7 +55,7 @@ def id(name='undefine'):
         # with DB() as mydb:
             # mydb.insert_user(user)        
             # max_users = mydb.get_max().strip(",()")
-        mailing(jsonify(mydb.get_users()))
+        mailing(mail, jsonify(mydb.get_users()))
         return render_template('id.html', name=user, max_users=max_users) 
 
 @app.route('/json', methods=['GET'])

@@ -2,9 +2,9 @@ import smtplib, ssl
 import threading
 
 
-def mailing(mymessage):
+def mailing(mail, mymessage):
     sender_mail = "dupondj587@gmail.com"
-    dest_mail = "test.receptionflask@gmail.com"
+    dest_mail = str(mail)
     password = input(str("Enter your mail password: "))
     message = mymessage
 
