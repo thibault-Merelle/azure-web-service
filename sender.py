@@ -5,7 +5,7 @@ import sys
 
 def mailing(mail, mymessage):
     sender_mail=os.environ['SENDER_MAIL']
-    dest_mail = str(mail)
+    dest_mail = mail
     password=os.environ['SENDER_PWD']
     message = mymessage
 
