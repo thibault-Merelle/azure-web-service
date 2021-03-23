@@ -1,18 +1,24 @@
-import smtplib, ssl
-import threading
-import os 
-import sys
+import smtplib, ssl 
+from email.mime.text import MIMEText
+from email import encoders
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-def mailing(mail, mymessage):
-    sender_mail=os.environ['SENDER_MAIL']
-    dest_mail = mail
-    password=os.environ['SENDER_PWD']
-    message = mymessage
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(sender_mail, password)
-    print("logging sender_mail success")
-    server.sendmail(sender_mail, dest_mail, message)
-    print("mail has been send to ", dest_mail)
-    server.quit()
+def send_mail(email_to):
+    sms = "test"
+    # sms = "***"
+    pwd= os.environ.get("SENDER_PWD")
+    email= os.environ.get("SENDER_MAIL")
+    # for i in data:
+    #     for y in i:
+    #         sms = sms + y + " * "
+    #     sms = sms + " *** "
+    msg = MIMEText(sms, 'html')
+    msg['From'] = email
+    msg['To'] = email_to
+    msg['Subject'] = 'bonjour !!!' 
+    s = smtplib.SMTP_SSL(host = 'smtp.gmail.com', port = 465)
+    s.login(user = email, password = pwd)
+    s.sendmail(email, email, msg.as_string())
+    s.quit()
