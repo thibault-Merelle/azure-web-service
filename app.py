@@ -87,8 +87,8 @@ def hello(name):
 
 if __name__ == '__main__':
     with DB() as mydb:
-        mydb.del_table()
-        mydb.set_table()
-        mydb.test_insert()
+        # mydb.del_table()
+        # mydb.set_table()
+        # mydb.test_insert()
         app.run(host='0.0.0.0', port=3000, debug=True)
         # os.environ['FLASK_RUN_PORT']
