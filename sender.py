@@ -1,6 +1,7 @@
 import smtplib, ssl
 import threading
 import os 
+import sys
 
 def mailing(mail, mymessage):
     sender_mail=os.environ['SENDER_MAIL']
