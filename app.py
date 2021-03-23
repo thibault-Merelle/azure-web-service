@@ -45,7 +45,7 @@ def id(name='undefine'):
     with DB() as mydb:
         checking = mydb.insert_user(user) 
         max_users = mydb.get_max().strip(",()")
-    if not user:
+    if not user or not mail:
         return render_template('index.html') 
     elif checking == False:
         return render_template('index.html', checking=False)
