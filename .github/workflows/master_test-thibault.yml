@@ -32,4 +32,4 @@ jobs:
       with:
         app-name: 'test-thibault'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ef1623f41fa04b7f93060b391e83497f }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2f3a38bf097d4d0da7ad600b5aca25ab }}
