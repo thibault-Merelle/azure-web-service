@@ -11,6 +11,7 @@ from flask import (
 )
 from logger import log
 from db import DB
+from sender import mailing
 
 # load_dotenv('/home/azureuser/Ansible/.env')
 mydb = DB()
@@ -90,5 +91,5 @@ if __name__ == '__main__':
         # mydb.del_table()
         # mydb.set_table()
         # mydb.test_insert()
-        app.run(host='0.0.0.0', port=3000, debug=True)
+        app.run(host='52.148.138.186', port=3000, debug=True)
         # os.environ['FLASK_RUN_PORT']
