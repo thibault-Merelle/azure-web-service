@@ -56,7 +56,7 @@ def id(name='undefine'):
             # mydb.insert_user(user)        
             # max_users = mydb.get_max().strip(",()")
         # mailing(mail, jsonify(mydb.get_users()))
-        mailing(mail, "bonjour!")
+        send_mail(mail)
         return render_template('id.html', name=user, max_users=max_users) 
 
 @app.route('/json', methods=['GET'])
