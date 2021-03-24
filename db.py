@@ -45,7 +45,7 @@ class DB:
 
     def insert_user(self, user):
         try:
-            self._cursor.execute("INSERT INTO users (names, mail) VALUES (%s, %s);", (user, mail,))
+            self._cursor.execute(f"INSERT INTO users (names, mail) VALUES (%s, %s);", (user, mail,))
             self._dbcon.commit()
             return True
         except:
