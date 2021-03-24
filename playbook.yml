@@ -4,13 +4,16 @@
   become_method: sudo
   remote_user: "{{ AZ_user }}"
 
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
   tasks:
 
-  - name: clone git repository
-    git:
-      repo: "https://github.com/{{ github_user }}/{{ app_name }}.git"
-      dest: /home/{{ AZ_user }}/{{ app_name }}
-      update: yes
+  # - name: clone git repository
+  #   git:
+  #     repo: "https://github.com/{{ github_user }}/{{ app_name }}.git"
+  #     dest: /home/{{ AZ_user }}/{{ app_name }}
+  #     update: yes
 
 
   - name: Ensure bash, OpenSSl, and libssl are the latest versions
@@ -28,6 +31,8 @@
   - name: ensure packages are installed
     apt: name={{ item }} state=latest
     with_items:
+        - python-pip
+        - python3-pip
         - postgresql
         - libpq-dev
         - python3-flask
@@ -42,6 +47,10 @@
      password: "{{ dbpassword }}"
      role_attr_flags: "CREATEDB,NOSUPERUSER"
 
+# Server is running
+  - name: Ensure the PostgreSQL service is running
+    service: name=postgresql state=started enabled=yes
+
   - name: Create database
     become: yes
     become_user: postgres
@@ -49,6 +58,6 @@
         name: "{{ dbname }}"
         owner: "{{ dbuser }}"
 
-  - name: execute app.py
-    command: python3 /home/{{ AZ_user }}/{{ app_name }}/app.py
+  # - name: execute app.py
+  #   command: python3 /home/{{ AZ_user }}/{{ app_name }}/app.py
 
