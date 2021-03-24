@@ -13,7 +13,7 @@ class DB:
             self._dbcon = psycopg2.connect(
                 host=os.environ['AZ_POSTGRES_HOST'],
                 user=os.environ['AZ_POSTGRES_USER'],
-                password=os.environ['AZ_POSTGRES_PASSWORD'],
+                # password=os.environ['AZ_POSTGRES_PASSWORD'],
                 database=os.environ['AZ_POSTGRES_DATABASE'],
                 port=os.environ['AZ_POSTGRES_PORT']
             )
