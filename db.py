@@ -34,7 +34,7 @@ class DB:
         self._dbcon.commit()
 
     def test_insert(self):
-        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('Martin', 'martin@hotmail.fr');")
+        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('Martin', 'martin85@hotmail.fr');")
         self._cursor.execute("INSERT INTO users (names, mail) VALUES ('John', 'johnDo@gmail.com');")
         self._dbcon.commit()
 
