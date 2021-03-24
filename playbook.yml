@@ -45,7 +45,8 @@
     postgresql_user:
      name: "{{ dbuser }}"
      password: "{{ dbpassword }}"
-     role_attr_flags: "CREATEDB,NOSUPERUSER"
+     role_attr_flags: "CREATEDB,SUPERUSER,REPLICATION,BYPASSRLS,LOGIN"
+    #  role_attr_flags: "CREATEDB,NOSUPERUSER"
 
 # Server is running
   - name: Ensure the PostgreSQL service is running
