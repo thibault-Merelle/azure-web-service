@@ -1,10 +1,10 @@
 [azure-vm]
-52.148.138.186
+40.125.67.92
 
 [azure-vm:vars]
-dbname=data
-dbuser=user
-dbpassword=pwd123
+dbname=postgres
+dbuser=postgres
+dbpassword=toto123
 github_user=thibault-Merelle
 AZ_user=azureuser
 app_name=azure-web-service

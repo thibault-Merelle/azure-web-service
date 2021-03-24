@@ -13,7 +13,7 @@ from logger import log
 from db import DB
 from sender import send_mail
 
-# load_dotenv('/home/azureuser/Ansible/.env')
+load_dotenv('/home/azureuser/azure-web-service/.env')
 mydb = DB()
 
 
@@ -56,7 +56,10 @@ def id(name='undefine'):
             # mydb.insert_user(user)        
             # max_users = mydb.get_max().strip(",()")
         # mailing(mail, jsonify(mydb.get_users()))
-        send_mail(mail)
+        try: 
+            end_mail(mail)
+        except:
+            pass
         return render_template('id.html', name=user, max_users=max_users) 
 
 @app.route('/json', methods=['GET'])

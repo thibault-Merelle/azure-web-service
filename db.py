@@ -1,8 +1,8 @@
 import psycopg2
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import sys
-load_dotenv('/home/azureuser/azure-web-service/.env')
+# load_dotenv('/home/azureuser/azure-web-service/.env')
 
 class DB:
     def __init__(self):
@@ -34,8 +34,8 @@ class DB:
         self._dbcon.commit()
 
     def test_insert(self):
-        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('Martin', 'martin85@hotmail.fr');")
-        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('John', 'johnDo@gmail.com');")
+        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('Martin', 'martin85@hotmail.fr')")
+        self._cursor.execute("INSERT INTO users (names, mail) VALUES ('John', 'johnDo@gmail.com')")
         self._dbcon.commit()
 
     # def check_user(self, user):
@@ -45,7 +45,7 @@ class DB:
 
     def insert_user(self, user):
         try:
-            self._cursor.execute(f"INSERT INTO users (names, mail) VALUES (%s, %s);", (user, mail,))
+            self._cursor.execute("INSERT INTO users (names, mail) VALUES (%s, %s)", (user, mail,))
             self._dbcon.commit()
             return True
         except:
