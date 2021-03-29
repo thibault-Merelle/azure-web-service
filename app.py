@@ -10,10 +10,10 @@ from flask import (
     request
 )
 from logger import log
-from db import DB
+from my_db import DB
 from sender import send_mail
 
-load_dotenv('/home/azureuser/azure-web-service/.env')
+# load_dotenv('/home/azureuser/azure-web-service/.env')
 mydb = DB()
 
 
